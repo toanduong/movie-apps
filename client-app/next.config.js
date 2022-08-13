@@ -4,7 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["image.tmdb.org"]
-  }
+  },
+  output: 'standalone'
 }
 
 module.exports = nextConfig

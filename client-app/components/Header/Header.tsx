@@ -12,17 +12,27 @@ const Header = ({ setQuery }: Props) => (
         <div className="flex justify-between w-full h-full max-w-7xl m-auto px-4">
             <Link href="/">
                 <a className="flex items-center cursor-pointer">
-                    <div className="invisible md:visible">
+                    <div className="absolute pt-2">
                         <Image height="50" width="150" src="/rmdb-logo.svg" alt="movie-app-logo"/>
                     </div>
-                    <div className="absolute md:invisible pt-2">
-                        <Image height="42" width="42" src="/rmdb-logo-small.svg" alt="movie-app-logo"/>
-                    </div>
+                    
                 </a>
             </Link>
             {setQuery ? (
                 <div className="relative flex items-center">
                     <SearchInput setQuery={setQuery} />
+                    <Link href="/login">
+                    <button type="submit"
+                        className="ml-4 border 
+                                    border-transparent 
+                                    bg-cyan-400 
+                                    px-10 py-1 
+                                    text-sm
+                                    rounded-full
+                                    hover:bg-transparent border-cyan-400 hover:text-white duration-300">
+                        Login
+                    </button>
+                    </Link>
                 </div>
             ) : null}
         </div>
