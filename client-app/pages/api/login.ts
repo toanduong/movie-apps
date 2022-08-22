@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
     if(!req.body) {
         res.statusCode = 500;
-        res.end("Erro");
+        res.end("Error");
     }
 
     const { email, password } = req.body;

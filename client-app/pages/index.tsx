@@ -1,5 +1,5 @@
 import React from 'react';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import Card from '../components/Card/Card';
 import Grid from '../components/Grid/Grid';
@@ -13,7 +13,7 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
 const Home: NextPage = () => {
   const [query, setQuery] = React.useState("");
   const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
-  
+
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
     if (scrollHeight - scrollTop === clientHeight) fetchNextPage()
@@ -49,5 +49,7 @@ const Home: NextPage = () => {
     </main>
   );
 };
+
+
 
 export default Home;

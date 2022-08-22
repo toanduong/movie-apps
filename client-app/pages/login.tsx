@@ -4,6 +4,7 @@ import { useFetchMovies } from "../api/fetchHooks";
 import Header from "../components/Header/Header";
 import { FaFacebookF, FaGoogle, FaRegEnvelope  } from "react-icons/fa"
 import { MdLockOutline } from "react-icons/md"
+import { signIn } from "next-auth/react";
 
 const Login = () => {
     const [query, setQuery] = React.useState("");
@@ -26,7 +27,7 @@ const Login = () => {
                                     <a href="#" className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 hover:bg-cyan-500 hover:text-white duration-300" >
                                         <FaFacebookF />
                                     </a>
-                                    <a href="#" className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 ml-2 hover:bg-cyan-500 hover:text-white duration-300" >
+                                    <a href="#" onClick={() => signIn()} className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 ml-2 hover:bg-cyan-500 hover:text-white duration-300" >
                                         <FaGoogle />
                                     </a>
                                 </div>
