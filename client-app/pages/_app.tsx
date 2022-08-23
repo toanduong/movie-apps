@@ -5,13 +5,13 @@ import { SessionProvider } from 'next-auth/react'
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps, session }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps }  }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-        <SessionProvider session={session}>
+    <SessionProvider session={session}>
+        <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
-        </SessionProvider>
-    </QueryClientProvider>
+        </QueryClientProvider>
+    </SessionProvider>
   )
 }
 

@@ -1,4 +1,5 @@
 import { movieUrl, creditsUrl, IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
+import React from 'react';
 // Basic fetch
 import { basicFetch } from '../api/fetchFunctions';
 // Components
@@ -17,9 +18,11 @@ type Props = {
   cast: Cast[];
 };
 
-const Movie: NextPage<Props> = ({ movie, cast, directors }) => (
+const Movie: NextPage<Props> = ({ movie, cast, directors }) => {
+  const [query, setQuery] = React.useState("");
+  return (
   <main>
-    <Header />
+    <Header setQuery={setQuery}/>
     <Breadcrumb title={movie.original_title} />
     <MovieInfo
       thumbUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/no_image.jpg'}
@@ -44,7 +47,7 @@ const Movie: NextPage<Props> = ({ movie, cast, directors }) => (
       ))}
     </Grid>
   </main>
-);
+)};
 
 export default Movie;
 

@@ -26,9 +26,7 @@ const SearchInput = ({ setQuery }: Props) =>  {
             placeholder="Search Movie" 
             value={text} 
             onChange={handlerInput} />
-            <div className="relative ml-4">
-                <Image width="30" height="32" src="/tmdb-logo.svg" alt="tmbd-logo"/>
-            </div>
+            
         </>
     );
 };

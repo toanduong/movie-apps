@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from 'next-auth/providers/github'
 
 export default NextAuth({
   providers: [
@@ -12,23 +13,9 @@ export default NextAuth({
         response_type: "code"
       }
     }),
-  ],
-  secret: process.env.JWT_SECRET,
-  jwt: {
-    encryption: true,
-  },
-  callbacks: {
-    async jwt(token, account) {
-      if (account?.accessToken) {
-        token.accessToken = account.accessToken;
-      }
-      return token;
-    },
-    redirect: async (url, _baseUrl) => {
-      if (url === '/profile') {
-        return Promise.resolve('/');
-      }
-      return Promise.resolve('/');
-    },
-  },
+    GithubProvider({
+      clientId: process.env.GITHUB_API_KEY,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    })
+  ]
 });

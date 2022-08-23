@@ -2,13 +2,12 @@ import Head from "next/head";
 import React from "react";
 import { useFetchMovies } from "../api/fetchHooks";
 import Header from "../components/Header/Header";
-import { FaFacebookF, FaGoogle, FaRegEnvelope  } from "react-icons/fa"
+import { FaGithub, FaGoogle, FaRegEnvelope  } from "react-icons/fa"
 import { MdLockOutline } from "react-icons/md"
 import { signIn } from "next-auth/react";
 
 const Login = () => {
     const [query, setQuery] = React.useState("");
-    const { data, fetchNextPage, isLoading, isFetching, error } = useFetchMovies(query);
 
     return (
         <main>
@@ -24,10 +23,10 @@ const Login = () => {
                                 </h2>
                                 <div className="w-10 h-1 borer-2 bg-cyan-500 inline-block mb-2"></div>
                                 <div className="flex justify-center my-2">
-                                    <a href="#" className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 hover:bg-cyan-500 hover:text-white duration-300" >
-                                        <FaFacebookF />
+                                    <a href="#" onClick={() => signIn("github")} className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 hover:bg-cyan-500 hover:text-white duration-300" >
+                                        <FaGithub />
                                     </a>
-                                    <a href="#" onClick={() => signIn()} className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 ml-2 hover:bg-cyan-500 hover:text-white duration-300" >
+                                    <a href="#" onClick={() => signIn("google")} className="border-2 border-cyan-300 text-cyan-500 rounded-full px-2 py-2 ml-2 hover:bg-cyan-500 hover:text-white duration-300" >
                                         <FaGoogle />
                                     </a>
                                 </div>
